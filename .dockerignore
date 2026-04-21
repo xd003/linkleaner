@@ -1,0 +1,8 @@
+.git
+.github
+target
+result
+.direnv
+.env
+.envrc
+.codex

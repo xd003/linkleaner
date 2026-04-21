@@ -35,6 +35,14 @@ sync with upstream releases, or push your own Docker image.
 
 ### Docker
 
-The release CI pushes the `ghcr.io/msfjarvis/linkleaner:latest` image to GitHub Container Registry
-which can be pulled periodically for the latest code. You can run this image directly with
-the environment variables from `.env.sample` since it has a configured entrypoint.
+This repository currently has two container paths:
+
+- `flake.nix` builds Nix-based images for the existing Fly.io release flow.
+- `.github/workflows/publish-ghcr.yml` builds and publishes a Docker image to GitHub Container Registry.
+
+The GitHub Actions workflow publishes a multi-arch image for `linux/amd64` and `linux/arm64`
+to `ghcr.io/<owner>/<repo>`. On the default branch it updates the `latest` tag, and on version
+tags it also publishes the matching release tag.
+
+You can run the published image directly with the environment variables from `.env.sample`
+since it has a configured entrypoint.
